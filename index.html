@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="rm">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick and Morty Api</title>
+    <script src="./lib/angular.min.js" defer></script>
+    <script src="./js/app.js" defer></script>
+    <script src="./js/services/charactersAPI.js"defer></script>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body ng-controller="rmCtrl" >
+    <main>
+        <header class="header">
+            <img src="{{logo}}" alt="" class="logo">
+            <div class="loading"><button ng-click = "getrm()" ng-hide="characters!=null">Loading Characters</button></div>
+            <div class="btns" ng-show="characters!=null">
+                
+                <button ng-click="prev()" ng-hide="url=='https://rickandmortyapi.com/api/character'"><< Prev</button>
+                <button ng-click="next()" >Next >></button>
+            </div>
+        </header>
+        <section class="characters">
+            <div class="portal" ng-if="!characters">
+                <img src="{{portal}}" alt="">
+            </div>
+            
+            <div class="characterContainer" ng-repeat="character in characters">
+                <img src="{{character.image}}" alt="">
+                <p > Name: {{character.name}}</p>
+                <p > Status: {{character.status}}</p>
+                <p> Specie: {{character.species}}</p>
+                <p> Gender: {{character.gender}}</p>
+                <p>Origin:{{character.origin.name}}</p>
+                <p>Location:{{character.location.name}}</p>
+            </div>
+        </section>
+        
+       
+    </main>
+    
+</body>
+</html>
