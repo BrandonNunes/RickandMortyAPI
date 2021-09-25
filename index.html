@@ -21,9 +21,13 @@
                 <button ng-click="prev()" ng-hide="url=='https://rickandmortyapi.com/api/character'"><< Prev</button>
                 <button ng-click="next()" >Next >></button>
             </div>
+            <form action="">
+                <input  class="search" type="text">
+                <button>Buscar</button>
+            </form>
         </header>
         <section class="characters">
-            <div class="portal" ng-if="!characters">
+            <div class="portal" ng-if="!characters" ng-click="getrm()">
                 <img src="{{portal}}" alt="">
             </div>
             
