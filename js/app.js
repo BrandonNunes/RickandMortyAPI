@@ -32,7 +32,6 @@ app.controller("rmCtrl",($scope, $http,charactersAPI)=>{
         .then((response)=>{
             $scope.persons = response.data.results
             $scope.value = "";
-            console.log($scope.persons)
         })
    }
    
