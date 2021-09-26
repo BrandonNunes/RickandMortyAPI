@@ -148,7 +148,10 @@ button::before{
 @media  screen and (max-width:500px) {
     .characterContainer{
         width: 10rem;
-        height: 15rem;
-        
+        height: 15rem;   
+    }
+    .personContainer{
+        width: 10rem;
+        height: 15rem;      
     }
 }
