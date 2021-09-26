@@ -15,22 +15,30 @@
     <main>
         <header class="header">
             <img src="{{logo}}" alt="" class="logo">
-            <div class="loading"><button ng-click = "getrm()" ng-hide="characters!=null">Loading Characters</button></div>
+            <div class="loading"><button ng-click = "getrm()" ng-hide="characters!=null">Carregar personagens</button></div>
             <div class="btns" ng-show="characters!=null">
                 
-                <button ng-click="prev()" ng-hide="url=='https://rickandmortyapi.com/api/character'"><< Prev</button>
-                <button ng-click="next()" >Next >></button>
+                <button ng-click="prev()" ng-hide="url=='https://rickandmortyapi.com/api/character'"><< Ant.</button>
+                <button ng-click="next()" >Prox. >></button>
             </div>
-            <form action="">
-                <input  class="search" type="text">
-                <button>Buscar</button>
-            </form>
+            <form >
+                <input  class="search" type="text" ng-model="value" placeholder="Pesquisar por nome...">  
+                <button ng-click="search()" ng-if="value.length>=2">Buscar</button>
+            </form>          
         </header>
         <section class="characters">
-            <div class="portal" ng-if="!characters" ng-click="getrm()">
+            <div class="portal" ng-if="!characters" ng-hide="persons" ng-click="getrm()">
                 <img src="{{portal}}" alt="">
             </div>
-            
+            <div class="personContainer" ng-repeat="person in persons">
+                <img src="{{person.image}}" alt="">
+                <p > Name: {{person.name}}</p>
+                <p > Status: {{person.status}}</p>
+                <p> Specie: {{person.species}}</p>
+                <p> Gender: {{person.gender}}</p>
+                <p>Origin:{{person.origin.name}}</p>
+                <p>Location:{{person.location.name}}</p>
+            </div>
             <div class="characterContainer" ng-repeat="character in characters">
                 <img src="{{character.image}}" alt="">
                 <p > Name: {{character.name}}</p>

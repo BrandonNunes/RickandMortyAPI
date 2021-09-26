@@ -6,6 +6,7 @@ app.controller("rmCtrl",($scope, $http,charactersAPI)=>{
     $scope.url = 'https://rickandmortyapi.com/api/character'
     $scope.characters = null;
    $scope.getrm = () => {
+      $scope.persons = null;
       $http.get($scope.url)    
       .then((response)=>{
           $scope.characters = response.data.results
@@ -22,6 +23,17 @@ app.controller("rmCtrl",($scope, $http,charactersAPI)=>{
         }
           console.log(response.data.results)
       })
+   }
+   $scope.value = "";
+   $scope.persons = null;
+   $scope.search = () => {
+        $scope.characters = null;
+        $http.get("https://rickandmortyapi.com/api/character/?name="+$scope.value)
+        .then((response)=>{
+            $scope.persons = response.data.results
+            $scope.value = "";
+            console.log($scope.persons)
+        })
    }
    
 })
