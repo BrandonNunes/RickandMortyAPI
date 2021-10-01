@@ -19,7 +19,7 @@
             <div class="btns" ng-show="characters!=null">
                 
                 <button ng-click="prev()" ng-hide="url=='https://rickandmortyapi.com/api/character'"><< Ant.</button>
-                <button ng-click="next()" >Prox. >></button>
+                <button ng-click="next()"  >Prox. >></button>
             </div>
             <form >
                 <input  class="search" type="text" ng-model="value" placeholder="Pesquisar por nome...">  
@@ -33,7 +33,7 @@
             <div class="personContainer" ng-repeat="person in persons">
                 <img src="{{person.image}}" alt="">
                 <p > Nome: {{person.name}}</p>
-                <p > Status: {{person.status}}</p>
+                <p > Status: <span ng-style="person.status==='Alive' && {'color':'green'} || person.status==='Dead' && {'color':'red'} || person.status==='unknown' && {'color':'gray'}">{{person.status}}</span></p>
                 <p> Especie: {{person.species}}</p>
                 <p> Genero: {{person.gender}}</p>
                 <p>Origem: {{person.origin.name}}</p>
@@ -41,12 +41,12 @@
             </div>
             <div class="characterContainer" ng-repeat="character in characters">
                 <img src="{{character.image}}" alt="">
-                <p > Nome: {{character.name}}</p>
-                <p > Status: {{character.status}}</p>
-                <p> Especie: {{character.species}}</p>
-                <p> Genero: {{character.gender}}</p>
-                <p>Origem:{{character.origin.name}}</p>
-                <p>Localização:{{character.location.name}}</p>
+                <p > Nome:<span> {{character.name}}</p>
+                <p > Status: <span ng-style="character.status==='Alive' && {'color':'green'} || character.status==='Dead' && {'color':'red'} || character.status==='unknown' && {'color':'gray'}">{{character.status}}</span></p>
+                <p> Especie:<span>{{character.species}}</span> </p>
+                <p> Genero:<span>{{character.gender}}</span> </p>
+                <p>Origem: <span>{{character.origin.name}}</span></p>
+                <p>Localização: <span>{{character.location.name}}</span></p>
             </div>
         </section>
         

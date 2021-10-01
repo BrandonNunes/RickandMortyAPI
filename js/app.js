@@ -5,11 +5,16 @@ app.controller("rmCtrl",($scope, $http,charactersAPI)=>{
     $scope.portal = "./images/portal.png"
     $scope.url = 'https://rickandmortyapi.com/api/character'
     $scope.characters = null;
+    $scope.status = {
+        'color':'red'
+    }
    $scope.getrm = () => {
       $scope.persons = null;
       $http.get($scope.url)    
       .then((response)=>{
           $scope.characters = response.data.results
+         
+        console.log($scope.status)
           $scope.next = () => {
             $scope.url = response.data.info.next;
             $scope.getrm()
@@ -21,7 +26,7 @@ app.controller("rmCtrl",($scope, $http,charactersAPI)=>{
             }
             $scope.getrm()
         }
-          console.log(response.data.results)
+          
       })
    }
    $scope.value = "";
